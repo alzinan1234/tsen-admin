@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* CoFo Raffine → default sans */
+  --font-sans: var(--font-cofo), ui-sans-serif, system-ui, sans-serif;
+
+  /* Tenez → serif stack for blog posts */
+  --font-serif: var(--font-tenez), Georgia, serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans); /* CoFo Raffine globally */
+}
