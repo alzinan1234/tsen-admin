@@ -66,7 +66,8 @@ const getAuthHeaders = (isFormData: boolean = false): HeadersInit => {
  * Get editor profile
  */
 export async function getEditorProfile(): Promise<EditorProfile> {
-  const url = `${BASE_URL}${API_ENDPOINTS.EDITOR_GET_PROFILE}`;
+  // Using ADMIN_GET_PROFILE endpoint (which should work for editor as well)
+  const url = `${BASE_URL}${API_ENDPOINTS.ADMIN_GET_PROFILE}`;
   console.log("Fetching profile from:", url);
   
   try {
@@ -87,7 +88,7 @@ export async function getEditorProfile(): Promise<EditorProfile> {
     console.log("Profile data:", data);
 
     if (!data.success) {
-      throw new Error(data as any || "Failed to fetch profile");
+      throw new Error((data as any).message || "Failed to fetch profile");
     }
 
     return data.data;
@@ -107,7 +108,8 @@ export async function editEditorProfile(params: EditProfileParams): Promise<Edit
   if (params.phone) formData.append("phone", params.phone);
   if (params.profileImage) formData.append("profileImage", params.profileImage);
 
-  const url = `${BASE_URL}${API_ENDPOINTS.EDITOR_EDIT_PROFILE}`;
+  // Using ADMIN_EDIT_PROFILE endpoint
+  const url = `${BASE_URL}${API_ENDPOINTS.ADMIN_EDIT_PROFILE}`;
   console.log("Updating profile at:", url);
   console.log("Form data entries:", Array.from(formData.entries()));
 
@@ -144,14 +146,14 @@ export async function editEditorProfile(params: EditProfileParams): Promise<Edit
  * Change editor password
  */
 export async function changeEditorPassword(params: ChangePasswordParams): Promise<ChangePasswordResponse> {
-  const url = `${BASE_URL}${API_ENDPOINTS.EDITOR_CHANGE_PASSWORD}`;
+  // Using ADMIN_CHANGE_PASSWORD endpoint
+  const url = `${BASE_URL}${API_ENDPOINTS.ADMIN_CHANGE_PASSWORD}`;
   const body = JSON.stringify({
     oldPassword: params.oldPassword,
     newPassword: params.newPassword,
   });
   
   console.log("Changing password at:", url);
-  console.log("Request body:", { oldPassword: "***", newPassword: "***" });
 
   try {
     const response = await fetch(url, {

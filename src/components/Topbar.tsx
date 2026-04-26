@@ -82,14 +82,14 @@ const Topbar: React.FC<TopbarProps> = ({ toggleMobileMenu }) => {
     }
   };
 
-  const handleUserImageClick = (): void => {
-    router.push("/editor/profile");
-    setShowDropdown(false);
-  };
+  // const handleUserImageClick = (): void => {
+  //   router.push("/editor/profile");
+  //   setShowDropdown(false);
+  // };
 
-  const handleNotificationClick = (): void => {
-    router.push("/editor/notifications");
-  };
+  // const handleNotificationClick = (): void => {
+  //   router.push("/editor/notifications");
+  // };
 
   const handleSettingsClick = (): void => {
     router.push("/editor/settings");
@@ -139,7 +139,7 @@ const Topbar: React.FC<TopbarProps> = ({ toggleMobileMenu }) => {
         {/* Notification Bell */}
         <div
           className="relative cursor-pointer flex items-center gap-2 bg-gray-50 hover:bg-gray-100 rounded-full py-2 px-3 transition-all group"
-          onClick={handleNotificationClick}
+          // onClick={handleNotificationClick}
         >
           <Bell size={20} stroke="#636363" className="group-hover:stroke-black transition-colors" />
           
@@ -206,21 +206,21 @@ const Topbar: React.FC<TopbarProps> = ({ toggleMobileMenu }) => {
 
               {/* Menu Items */}
               <div className="py-1">
-                <button
+                {/* <button
                   onClick={handleUserImageClick}
                   className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                 >
                   <User size={16} className="text-gray-400" />
                   <span>My Profile</span>
-                </button>
-
+                </button> */}
+{/* 
                 <button
                   onClick={handleSettingsClick}
                   className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                 >
                   <Settings size={16} className="text-gray-400" />
                   <span>Settings</span>
-                </button>
+                </button> */}
 
                 <div className="border-t border-gray-100 my-1"></div>
 

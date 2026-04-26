@@ -14,7 +14,8 @@ import {
   Loader2,
   RefreshCw,
 } from "lucide-react";
-import { getDashboardStats, DashboardStats } from "@/components/dashboardStatsApiClient";
+import { getDashboardStats } from "@/components/dashboardStatsApiClient";
+import type { DashboardStats } from "@/components/dashboardStatsApiClient";
 
 // ─── Types ─────────────────────────────────────────────────────────────────
 

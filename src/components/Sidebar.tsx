@@ -38,7 +38,7 @@ const navItems: NavItem[] = [
   { name: "User Management", href: "/admin/user-management", icon: User },
   { name: "Archive", href: "/admin/archive", icon: FileText },
   { name: "Subscription", href: "/admin/subscription", icon: CreditCard },
-  { name: "Settings", href: "/admin/settings", icon: Hexagon },
+  // { name: "Settings", href: "/admin/settings", icon: Hexagon },
 ];
 
 const Sidebar: React.FC<SidebarProps> = ({ 

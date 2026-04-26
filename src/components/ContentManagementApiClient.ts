@@ -137,7 +137,8 @@ export async function getAllStories(
   if (params.search) query.set("search", params.search);
 
   const qs = query.toString();
-  const url = `${BASE_URL}${API_ENDPOINTS.STORY_GET_ALL}${qs ? `?${qs}` : ""}`;
+  // Construct URL directly since the endpoint might not be in API_ENDPOINTS
+  const url = `${BASE_URL}/api/v1/story/editor/all${qs ? `?${qs}` : ""}`;
 
   return authFetch<StoriesResponse>(url, { method: "GET" });
 }
@@ -149,10 +150,8 @@ export async function getAllStories(
 export async function getStoryForReview(
   id: string
 ): Promise<StoryDetailResponse> {
-  return authFetch<StoryDetailResponse>(
-    `${BASE_URL}${API_ENDPOINTS.STORY_REVIEW(id)}`,
-    { method: "GET" }
-  );
+  const url = `${BASE_URL}/api/v1/story/editor/review/${id}`;
+  return authFetch<StoryDetailResponse>(url, { method: "GET" });
 }
 
 /**
@@ -160,10 +159,8 @@ export async function getStoryForReview(
  * PATCH /api/v1/story/editor/approve/:id  (no body)
  */
 export async function approveStory(id: string): Promise<ActionResponse> {
-  return authFetch<ActionResponse>(
-    `${BASE_URL}${API_ENDPOINTS.STORY_APPROVE(id)}`,
-    { method: "PATCH" }
-  );
+  const url = `${BASE_URL}/api/v1/story/editor/approve/${id}`;
+  return authFetch<ActionResponse>(url, { method: "PATCH" });
 }
 
 /**
@@ -175,13 +172,11 @@ export async function scheduleStory(
   id: string,
   scheduledAt: string
 ): Promise<ActionResponse> {
-  return authFetch<ActionResponse>(
-    `${BASE_URL}${API_ENDPOINTS.STORY_SCHEDULE(id)}`,
-    {
-      method: "PATCH",
-      body: JSON.stringify({ scheduledAt }),
-    }
-  );
+  const url = `${BASE_URL}/api/v1/story/editor/schedule/${id}`;
+  return authFetch<ActionResponse>(url, {
+    method: "PATCH",
+    body: JSON.stringify({ scheduledAt }),
+  });
 }
 
 /**
@@ -193,13 +188,11 @@ export async function rejectStory(
   id: string,
   feedback: string
 ): Promise<ActionResponse> {
-  return authFetch<ActionResponse>(
-    `${BASE_URL}${API_ENDPOINTS.STORY_REJECT(id)}`,
-    {
-      method: "PATCH",
-      body: JSON.stringify({ feedback }),
-    }
-  );
+  const url = `${BASE_URL}/api/v1/story/editor/reject/${id}`;
+  return authFetch<ActionResponse>(url, {
+    method: "PATCH",
+    body: JSON.stringify({ feedback }),
+  });
 }
 
 /**
@@ -211,13 +204,11 @@ export async function requestRevision(
   id: string,
   feedback: string
 ): Promise<ActionResponse> {
-  return authFetch<ActionResponse>(
-    `${BASE_URL}${API_ENDPOINTS.STORY_REQUEST_REVISION(id)}`,
-    {
-      method: "PATCH",
-      body: JSON.stringify({ feedback }),
-    }
-  );
+  const url = `${BASE_URL}/api/v1/story/editor/request-revision/${id}`;
+  return authFetch<ActionResponse>(url, {
+    method: "PATCH",
+    body: JSON.stringify({ feedback }),
+  });
 }
 
 /**
@@ -242,13 +233,11 @@ export async function editStory(
   if (payload.coverImage instanceof File)
     formData.append("coverImage", payload.coverImage);
 
-  return authFetch<{ success: boolean; message: string; data: StoryDetail }>(
-    `${BASE_URL}${API_ENDPOINTS.STORY_EDIT(id)}`,
-    {
-      method: "PATCH",
-      body: formData,
-      // NOTE: Do NOT set Content-Type manually for FormData —
-      // the browser sets it with the correct boundary automatically.
-    }
-  );
+  const url = `${BASE_URL}/api/v1/story/editor/edit/${id}`;
+  return authFetch<{ success: boolean; message: string; data: StoryDetail }>(url, {
+    method: "PATCH",
+    body: formData,
+    // NOTE: Do NOT set Content-Type manually for FormData —
+    // the browser sets it with the correct boundary automatically.
+  });
 }

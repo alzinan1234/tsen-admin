@@ -17,7 +17,7 @@ export interface User {
   id: string;
   email: string;
   name?: string;
-  profileImage?: string;
+  profileImage?: string;  // Changed from required to optional string
   role?: string;
   phone?: string | null;
   createdAt?: string;
@@ -222,11 +222,11 @@ export async function loginAdmin(
   if (data.success && data.access_token && data.refresh_token) {
     TokenService.setTokens(data.access_token, data.refresh_token);
     if (data.data) {
-      // Ensure user has role
+      // Ensure user has role - handle profileImage properly
       const userWithRole = { 
         ...data.data, 
         role: "admin",
-        profileImage: data.data.profileImage || null
+        profileImage: data.data.profileImage || undefined  // Convert null to undefined
       };
       TokenService.setUser(userWithRole);
     }
