@@ -60,7 +60,7 @@ export interface ChangePasswordParams {
 const getAuthHeaders = (isFormData: boolean = false): HeadersInit => {
   const token = TokenService.getAccessToken();
   const headers: HeadersInit = {
-    "ngrok-skip-browser-warning": "true",
+    
   };
   
   if (token) {
@@ -87,7 +87,7 @@ export async function adminLogin(email: string, password: string): Promise<Admin
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "ngrok-skip-browser-warning": "true",
+        
       },
       body: JSON.stringify({ email, password }),
     });
@@ -116,7 +116,7 @@ export async function adminForgotPassword(email: string): Promise<ForgotPassword
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "ngrok-skip-browser-warning": "true",
+       
       },
       body: JSON.stringify({ email }),
     });
@@ -149,7 +149,7 @@ export async function adminResetPassword(
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "ngrok-skip-browser-warning": "true",
+        
       },
       body: JSON.stringify({ email, otp, newPassword }),
     });

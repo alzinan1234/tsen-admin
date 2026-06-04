@@ -1,5 +1,5 @@
 // api.ts
-export const BASE_URL = "https://katheleen-unerrant-consolingly.ngrok-free.dev";
+export const BASE_URL = "https://api.theopedmedia.com";
 
 export const API_ENDPOINTS = {
   // ─── Admin Auth ───────────────────────────────────────────────────────────

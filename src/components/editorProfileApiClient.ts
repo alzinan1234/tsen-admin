@@ -46,7 +46,7 @@ export interface ChangePasswordParams {
 const getAuthHeaders = (isFormData: boolean = false): HeadersInit => {
   const token = TokenService.getAccessToken();
   const headers: HeadersInit = {
-    "ngrok-skip-browser-warning": "true",
+   
   };
   
   if (token) {
