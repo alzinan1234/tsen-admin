@@ -117,7 +117,7 @@ async function request<T = unknown>(
 ): Promise<T> {
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
-    "ngrok-skip-browser-warning": "true",
+   
     ...extraHeaders,
   };
 
@@ -177,7 +177,7 @@ export async function formDataRequest<T = unknown>(
   auth: boolean = true
 ): Promise<T> {
   const headers: Record<string, string> = {
-    "ngrok-skip-browser-warning": "true",
+   
   };
 
   if (auth) {

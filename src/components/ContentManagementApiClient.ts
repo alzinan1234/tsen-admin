@@ -94,7 +94,7 @@ async function authFetch<T>(
   const token = TokenService.getAccessToken();
 
   const headers: Record<string, string> = {
-    "ngrok-skip-browser-warning": "true",
+    
     ...(options.headers as Record<string, string>),
   };
 
